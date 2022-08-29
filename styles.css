@@ -18,6 +18,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+  scroll-behavior: smooth;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -173,11 +174,11 @@ li {
   padding-right: 1rem;
 }
 
-.hide-li{
+/* .hide-li{
   display: none;
-}
+} */
 
-span {
+.myCircle {
   border-radius: 100px;
   height: 20px;
   width: 20px;
@@ -198,4 +199,23 @@ span {
 .tick-li{
   text-decoration: line-through;
   color: var(--color-DarkGrayishBlue);
+}
+
+.end-li{
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--color-DarkGrayishBlue);
+  background-color: var(--color-VeryDarkDesaturatedBlue);
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  border-bottom-left-radius:5px;
+  border-bottom-right-radius:5px;
+  padding-left:1.5rem;
+  padding-right: 1.5rem;
+}
+
+.show-end-li{
+  display: flex;
 }
