@@ -11,7 +11,7 @@ const all = document.querySelector(".all");
 const active = document.querySelector(".active");
 const completed = document.querySelector(".completed");
 
-const clear = document.querySelector(".clear")
+const clearCompleted = document.querySelector(".clear")
 
 
 
@@ -92,9 +92,9 @@ completed.addEventListener("click", ()=>{
 });
 
 
-clear.addEventListener("click", ()=>{
+clearCompleted.addEventListener("click", ()=>{
  
- if(tag.classList == "tick-li"){
+ if(tag.classList.contains("tick-li")){
   tag.remove();
 countNum.innerHTML = count.length
 
