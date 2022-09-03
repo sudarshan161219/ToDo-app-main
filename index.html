@@ -16,13 +16,14 @@
 <main class="container">
 
   <div class="box">
+    
 <header>
   <h1>Todo</h1>
   <div><img src="./images/icon-sun.svg" alt=""></div>
 </header>
 
 <div class="todo">
-  <button class="circle"></button>
+<button class="circle"></button>
 <input
 name="todo-input"
 class="todo-input"
@@ -39,19 +40,17 @@ placeholder="Create a new todo..."
 </ul>
 
 </div>
-<div class="end-li" ><p> <span class="count"></span> items left</p> <p> Clear Completed</p></div>
+<div class="end-li" ><p> <span class="count"></span> items left</p> <p class="clear"> Clear Completed</p></div>
+
+<footer class="footer" >
+  <p class="all" >All</p>
+  <p class="active" >Active</p>
+  <p class="completed" >Completed</p>
+</footer>
 
 </main>
   
-  <!-- Add dynamic number items left -->
 
-  <!-- All
-  Active 
-  Completed
-
-  Clear Completed
-
-  Drag and drop to reorder list -->
 
 <script src="app.js"></script>
 </body>

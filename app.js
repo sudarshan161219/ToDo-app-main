@@ -6,6 +6,15 @@ const countNum = document.querySelector(".count")
 let count = document.getElementsByTagName("li")
 
 
+
+const all = document.querySelector(".all");
+const active = document.querySelector(".active");
+const completed = document.querySelector(".completed");
+
+const clear = document.querySelector(".clear")
+
+
+
 inputTodo.addEventListener("change", (e)=> {
   var check = document.createElement("img");
  var tag = document.createElement("li");
@@ -21,21 +30,20 @@ inputTodo.addEventListener("change", (e)=> {
   element.appendChild(tag);
   inputTodo.value = '';
   endLi.classList.add("show-end-li")
- 
-   img.src= "images/icon-cross.svg" 
-  
 
+
+
+   img.src= "images/icon-cross.svg" 
    countNum.innerHTML = count.length
 
 
-   addTodo.addEventListener("click", (e)=> {
-   tag.appendChild(text);
+   addTodo.addEventListener("click", ()=> {
+    if(inputTodo.value){
+    tag.appendChild(text);
    tag.appendChild(img);
    element.appendChild(tag);
    inputTodo.value = '';
-
-
-    
+    }
 });
 
 
@@ -44,14 +52,55 @@ tag.remove();
 countNum.innerHTML = count.length
 });
 
-tick.addEventListener("click", (e)=> {
+
+tick.addEventListener("click", ()=> {
 tick.classList.add("tick")
 tag.classList.add("tick-li")
 tag.appendChild(check)
 check.src="images/icon-check.svg"
 check.classList.add("check-img");
 
+
+
+
 });
+
+
+all.addEventListener("click", ()=>{
+  tag.classList.remove("hideLi")
+  tag.classList.add("showLi")
+});
+
+active.addEventListener("click", ()=>{
+  if(tag.classList.contains("tick-li")){
+    tag.classList.add("hideLi")
+
+    }  if(!tag.classList.contains("tick-li")){
+      tag.classList.remove("hideLi")
+   
+      }
+
+});
+
+completed.addEventListener("click", ()=>{
+  if(!tag.classList.contains("tick-li")){
+    tag.classList.add("hideLi")
+    }  if(tag.classList.contains("tick-li")){
+    tag.classList.remove("hideLi")
+    }
+  
+});
+
+
+clear.addEventListener("click", ()=>{
+ 
+ if(tag.classList == "tick-li"){
+  tag.remove();
+countNum.innerHTML = count.length
+
+  }
+
+})
 
 
 
