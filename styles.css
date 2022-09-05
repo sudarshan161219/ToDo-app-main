@@ -104,11 +104,12 @@ body {
 
   }
 
+  /* Light mode */
   .light{
     background-image: url("./images/bg-mobile-light.jpg");
     background-repeat: no-repeat;
     background-size: contain;
-    background-color: var(---color-VeryLightGray);
+    background-color: var( --color-VeryLightGrayishBlue);
     transition: all 0.5s;
   }
 
@@ -129,6 +130,58 @@ display: block;
     display: block;
   } 
 
+  .light-todo-input{
+  background-color: var(--color-VeryLightGray);
+  color: var(--color-VeryDarkGrayishBlue);
+  position: relative;
+  width: 100%;
+  border: none;
+  height: 50px;
+  border-radius: 5px;
+outline: none;
+padding-left: 2.5rem;
+font-size: 0.9rem;
+font-weight: 400;
+transition: all 0.5s;
+
+  }
+
+
+  .light-circle{
+    background-color: var(--color-VeryLightGray);
+    left: 30px;
+    top: 120px;
+    z-index: 1;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    border: 1px solid var(--color-DarkGrayishBlue);
+    transition: all 0.5s;
+
+  } 
+
+
+  .light-footer{
+    display: flex;
+    font-weight: 700;
+    justify-content: space-evenly;
+    padding: 0 2rem;
+    height: 50px;
+    background-color: var(--color-VeryLightGray);
+    color: var(--color-DarkGrayishBlue);
+    align-items: center;
+    transition: all 0.5s;
+
+  }
+
+  .light-todo-list{
+    border-radius: 5px;
+    margin-top: 1.2rem;
+    background-color: var(--color-VeryLightGray);
+  color: var( --color-VeryDarkGrayishBlue);
+  }
+  
 
 header{
     display: flex;
@@ -173,7 +226,7 @@ font-weight: 400;
 .circle {
   background-color: var(--color-VeryDarkDesaturatedBlue);
   left: 30px;
-  top: 119px;
+  top: 120px;
   z-index: 1;
   position: absolute;
   width: 20px;

@@ -4,7 +4,8 @@ const element = document.querySelector(".todo-list");
 const endLi = document.querySelector(".end-li")
 const countNum = document.querySelector(".count")
 let count = document.getElementsByTagName("li")
-
+const todoList = document.querySelector(".todo-list")
+const footer = document.querySelector(".footer")
 
 
 const all = document.querySelector(".all");
@@ -114,10 +115,49 @@ light.addEventListener("click", ()=>{
 elementBody.classList.toggle("light")
 dark.classList.add("show-dark-icon")
 light.classList.add("hide-light-icon")
+addTodo.classList.add("light-circle")
+
+inputTodo.classList.contains("todo-input") ? 
+(inputTodo.classList.remove("todo-input") ,
+ inputTodo.classList.add("light-todo-input")) : none
+
+ addTodo.classList.contains("circle") ? 
+(addTodo.classList.remove("circle") ,
+ addTodo.classList.add("light-circle")) : none
+
+ todoList.classList.contains("todo-list") ? 
+ ( todoList.classList.remove("todo-list") ,
+   todoList.classList.add("light-todo-list")) : none
+
+
+ footer.classList.contains("footer") ? 
+ (footer.classList.remove("footer") ,
+  footer.classList.add("light-footer")) : none
+
+
 })
 
 dark.addEventListener("click", ()=>{
 elementBody.classList.toggle("light")
   dark.classList.remove("show-dark-icon")
   light.classList.remove("hide-light-icon")
+
+  inputTodo.classList.contains("light-todo-input") ?
+   (inputTodo.classList.remove("light-todo-input") ,
+    inputTodo.classList.add("todo-input")) : none
+
+    addTodo.classList.contains("light-circle") ? 
+    (addTodo.classList.remove("light-circle") ,
+     addTodo.classList.add("circle")) : none
+
+
+     todoList.classList.contains("light-todo-list") ? 
+     ( todoList.classList.remove("light-todo-list") ,
+       todoList.classList.add("todo-list")) : none
+
+
+     footer.classList.contains("light-footer") ? 
+     (footer.classList.remove("light-footer") ,
+      footer.classList.add("footer")) : none
+
   })
