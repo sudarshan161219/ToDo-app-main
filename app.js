@@ -10,10 +10,10 @@ let count = document.getElementsByTagName("li")
 const all = document.querySelector(".all");
 const active = document.querySelector(".active");
 const completed = document.querySelector(".completed");
-
 const clearCompleted = document.querySelector(".clear")
 
-
+const dark = document.querySelector(".dark-icon")
+const light = document.querySelector(".light-icon")
 
 inputTodo.addEventListener("change", (e)=> {
   var check = document.createElement("img");
@@ -108,3 +108,16 @@ countNum.innerHTML = count.length
 
 
 
+let elementBody = document.body;
+
+light.addEventListener("click", ()=>{
+elementBody.classList.toggle("light")
+dark.classList.add("show-dark-icon")
+light.classList.add("hide-light-icon")
+})
+
+dark.addEventListener("click", ()=>{
+elementBody.classList.toggle("light")
+  dark.classList.remove("show-dark-icon")
+  light.classList.remove("hide-light-icon")
+  })

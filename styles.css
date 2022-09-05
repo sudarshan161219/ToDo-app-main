@@ -93,7 +93,6 @@ table {
 body {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     min-height: 100vh;
     font-family: 'Josefin Sans', sans-serif;
     margin: 3rem 1.2rem;
@@ -102,6 +101,30 @@ body {
     background-size: contain;
     background-color: var(--color-VeryDarkBlue);
   }
+
+  .light{
+    background-image: url("./images/bg-mobile-light.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: var(---color-VeryLightGray);
+  }
+
+ .show-light-icon{
+display: block;
+  }
+
+  .hide-light-icon{
+    display: none;
+  }
+
+
+  .dark-icon{
+    display: none;
+  } 
+
+  .show-dark-icon{
+    display: block;
+  } 
 
 
 header{
@@ -148,9 +171,6 @@ font-weight: 400;
   background-color: var(--color-VeryDarkDesaturatedBlue);
   left: 30px;
   top: 119px;
-  /* right: 23px; */
-  /* margin-top: 0.7rem; */
-  /* margin-left: 0.5rem; */
   z-index: 1;
   position: absolute;
   width: 20px;
@@ -161,7 +181,7 @@ font-weight: 400;
 
 .todo-list{
   border-radius: 5px;
-  margin-top: 2rem;
+  margin-top: 1.2rem;
   background-color: var(--color-VeryDarkDesaturatedBlue);
 color: var(--color-VeryLightGray);
 }
