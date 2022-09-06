@@ -158,8 +158,16 @@ transition: all 0.5s;
     border-radius: 100px;
     border: 1px solid var(--color-DarkGrayishBlue);
     transition: all 0.5s;
-
   } 
+
+  .light-my-circle {
+    border-radius: 100px;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    left: 32px;
+    border: 1px solid var(--color-DarkGrayishBlue);
+}
 
 
   .light-footer{
@@ -180,6 +188,23 @@ transition: all 0.5s;
     margin-top: 1.2rem;
     background-color: var(--color-VeryLightGray);
   color: var( --color-VeryDarkGrayishBlue);
+  }
+
+
+  .light-end-li{
+    font-weight: 400;
+    font-size: 0.9rem;
+    background-color: var(--color-VeryLightGray);
+    color: var(--color-DarkGrayishBlue);
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+    padding-left:1.5rem;
+    padding-right: 1.5rem;
+    margin-bottom:1.5rem;
   }
   
 
@@ -256,7 +281,7 @@ li {
 
 
 
-.myCircle {
+.my-circle {
   border-radius: 100px;
   height: 20px;
   width: 20px;
