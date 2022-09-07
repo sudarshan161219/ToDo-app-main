@@ -12,6 +12,7 @@ const all = document.querySelector(".all");
 const active = document.querySelector(".active");
 const completed = document.querySelector(".completed");
 const clearCompleted = document.querySelector(".clear")
+const desktopClearCompleted = document.querySelector(".desktop-clear")
 
 const dark = document.querySelector(".dark-icon")
 const light = document.querySelector(".light-icon")
@@ -23,7 +24,6 @@ inputTodo.addEventListener("change", (e)=> {
  tick.classList.add("my-circle")
  var img = document.createElement("img");
  var text = document.createTextNode(inputTodo.value);
-
 
   tag.appendChild(tick);
   tag.appendChild(text);
@@ -44,11 +44,14 @@ inputTodo.addEventListener("change", (e)=> {
    tag.appendChild(img);
    element.appendChild(tag);
    inputTodo.value = '';
+    } else if(inputTodo.value === ""){
+  window.navigator.vibrate(300)
     }
 });
 
 
 img.addEventListener("click", ()=> {
+
 tag.remove();
 countNum.innerHTML = count.length
 });
@@ -93,7 +96,7 @@ completed.addEventListener("click", ()=>{
 
 
 clearCompleted.addEventListener("click", ()=>{
- 
+ alert("hello")
  if(tag.classList.contains("tick-li")){
   tag.remove();
 countNum.innerHTML = count.length
@@ -180,4 +183,3 @@ elementBody.classList.toggle("light")
 
 
 
-console.log(tick.classList.contains("my-circle"))
