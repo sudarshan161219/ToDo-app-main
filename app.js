@@ -3,6 +3,7 @@ const  addTodo = document.querySelector(".circle");
 const element = document.querySelector(".todo-list");
 const endLi = document.querySelector(".end-li")
 const countNum = document.querySelector(".count")
+const desktopNum = document.querySelector(".desktop-num")
 let count = document.getElementsByTagName("li")
 const todoList = document.querySelector(".todo-list")
 const footer = document.querySelector(".footer")
@@ -23,6 +24,7 @@ inputTodo.addEventListener("change", (e)=> {
  var tick = document.createElement("span")
  tick.classList.add("my-circle")
  var img = document.createElement("img");
+ img.classList.add("delete")
  var text = document.createTextNode(inputTodo.value);
 
   tag.appendChild(tick);
@@ -36,6 +38,7 @@ inputTodo.addEventListener("change", (e)=> {
 
    img.src= "images/icon-cross.svg" 
    countNum.innerHTML = count.length
+   desktopNum .innerHTML = count.length
 
 
    addTodo.addEventListener("click", ()=> {
@@ -44,16 +47,15 @@ inputTodo.addEventListener("change", (e)=> {
    tag.appendChild(img);
    element.appendChild(tag);
    inputTodo.value = '';
-    } else if(inputTodo.value === ""){
-  window.navigator.vibrate(300)
     }
+    
 });
 
 
 img.addEventListener("click", ()=> {
-
 tag.remove();
 countNum.innerHTML = count.length
+desktopNum.innerHTML = count.length
 });
 
 
@@ -96,19 +98,21 @@ completed.addEventListener("click", ()=>{
 
 
 clearCompleted.addEventListener("click", ()=>{
- alert("hello")
  if(tag.classList.contains("tick-li")){
   tag.remove();
 countNum.innerHTML = count.length
-
   }
-
 })
 
 
+desktopClearCompleted.addEventListener("click", ()=>{
+    if(tag.classList.contains("tick-li")){
+      tag.remove();
+    countNum.innerHTML = count.length
+      }
+    })
 
 });
-
 
 
 let elementBody = document.body;
@@ -183,3 +187,5 @@ elementBody.classList.toggle("light")
 
 
 
+  
+ 
