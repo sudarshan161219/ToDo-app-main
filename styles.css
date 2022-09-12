@@ -426,7 +426,10 @@ display: none;
 li:hover .delete{
   visibility:visible;
   transition: all 0.3s;
+}
 
+li:hover{
+  cursor: grab;
 }
  .circle:hover, .my-circle:hover, .dark-icon:hover, .light-icon:hover, .delete:hover,
  .all:hover, .active:hover, .completed:hover, .desktop-count:hover, .desktop-clear:hover{
