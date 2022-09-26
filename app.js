@@ -1,6 +1,6 @@
 const inputTodo = document.querySelector(".todo-input");
 const  addTodo = document.querySelector(".circle");
-const element = document.querySelector(".todo-list");
+let element = document.querySelector(".todo-list");
 const endLi = document.querySelector(".end-li")
 const countNum = document.querySelector(".count")
 const desktopNum = document.querySelector(".desktop-num")
@@ -18,30 +18,43 @@ const desktopClearCompleted = document.querySelector(".desktop-clear")
 const dark = document.querySelector(".dark-icon")
 const light = document.querySelector(".light-icon")
 
-
-
+const listItems =[]
 
 inputTodo.addEventListener("change", (e)=> {
   var check = document.createElement("img");
- var tag = document.createElement("li");
- var tick = document.createElement("span")
- tick.classList.add("my-circle")
+var tag = document.createElement('li');
+ var tick = document.createElement("span");
+ tick.classList.add("my-circle");
  var img = document.createElement("img");
- img.classList.add("delete")
+ img.classList.add("delete");
+//  var attrr = document.createAttribute('data-index');
  var text = document.createTextNode(inputTodo.value);
  var attr = document.createAttribute('draggable');
+ tag.setAttribute('data-index', count.length);
+ tag.value = `${count.length}`
 
  attr.value = 'true';
  tag.className = 'draggable';
  tag.setAttributeNode(attr);
+//  tag.setAttributeNode(attrr);
   tag.appendChild(tick);
   tag.appendChild(text);
-  tag.appendChild(img);
+  tag.appendChild(img); 
   element.appendChild(tag);
   inputTodo.value = '';
   endLi.classList.add("show-end-li")
 
- addEventsDragAndDrop(tag)
+
+
+
+
+
+
+  
+
+  dargEvents()
+  listItems.push(tag)
+
 
 
    img.src= "images/icon-cross.svg" 
@@ -58,8 +71,6 @@ inputTodo.addEventListener("change", (e)=> {
     }
     
    
-
-
 
 });
 
@@ -82,6 +93,7 @@ check.classList.add("check-img");
 
 
 });
+
 
 
 all.addEventListener("click", ()=>{
@@ -123,6 +135,8 @@ desktopClearCompleted.addEventListener("click", ()=>{
     countNum.innerHTML = count.length
       }
     })
+
+ 
 
 });
 
@@ -198,58 +212,69 @@ elementBody.classList.toggle("light")
   })
 
 
+let dragStartIndex;
+// let dragEndIndex;
 
 
+function dragStart(e){
+  dragStartIndex = +this.closest('li').getAttribute('data-index');
+console.log(dragStartIndex)
+// console.log(count)
 
-function dragStart(e) {
-  dragSrcEl = this;
-  e.dataTransfer.effectAllowed = 'move';
-  e.dataTransfer.setData('text/html', this.innerHTML);
-};
- 
-function dragEnter(e) {
-  this.classList.add('over');
 }
- 
-function dragLeave(e) {
-  e.stopPropagation();
-  this.classList.remove('over');
+
+
+function dragOver(e){
+  e.preventDefault()
+  const dragItem = document.querySelector('.draggable')
 }
- 
-function dragOver(e) {
-  e.preventDefault();
-  e.dataTransfer.dropEffect = 'move';
-  return false;
+
+function dragEnter(){
+  // console.log('Event: ', 'dragEnter')
 }
- 
-function dragDrop(e) {
-  if (dragSrcEl != this) {
-    dragSrcEl.innerHTML = this.innerHTML;
-    this.innerHTML = e.dataTransfer.getData('text/html');
-  }
-  return false;
+
+
+function dragDrop(){
+const dragEndIndex = +this.getAttribute('data-index')
+console.log(dragEndIndex)
+// console.log(count)
+// console.log(swapItems(dragStartIndex, dragEndIndex))
+
 }
+
+
+function dragLeave(){
+// console.log('leave')
+
+}
+
+// function swapItems(fromIndex, toIndex) {
+// const itemOne = listItems[fromIndex].querySelector('.draggable')
+// const itemTwo = listItems[toIndex].querySelector('.draggable')
+// // listItems[fromIndex].appendChild(itemTwo)
+// // listItems[toIndex].appendChild(itemOne)
+//  }
  
-function dragEnd(e) {
-  var listItens = document.querySelectorAll('.draggable');
-  [].forEach.call(listItens, function(item) {
-    item.classList.remove('over');
+
+function dargEvents() {
+  const draggables = document.querySelectorAll('.draggable');
+  const draggableList = document.querySelectorAll('.todo-list li')
+
+  draggables.forEach(draggable => {
+    draggable.addEventListener('dragstart', dragStart)
   });
-}
- 
-function addEventsDragAndDrop(el) {
-  el.addEventListener('dragstart', dragStart, false);
-  el.addEventListener('dragenter', dragEnter, false);
-  el.addEventListener('dragover', dragOver, false);
-  el.addEventListener('dragleave', dragLeave, false);
-  el.addEventListener('drop', dragDrop, false);
-  el.addEventListener('dragend', dragEnd, false);
-}
- 
-var listItens = document.querySelectorAll('.draggable');
-[].forEach.call(listItens, function(item) {
-  addEventsDragAndDrop(item);
-});
- 
 
- 
+draggableList.forEach(item => {
+  item.addEventListener('dragover', dragOver);
+  item.addEventListener('drop', dragDrop);
+  item.addEventListener('dragleave', dragLeave);
+  item.addEventListener('dragenter', dragEnter);
+})
+
+}
+
+
+new Sortable(element, {
+  animation: 150,
+  ghostClass: 'blue-background-class',
+});
