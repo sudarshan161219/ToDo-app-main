@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
 </head>
 <body>
 
@@ -25,8 +24,10 @@
   </div>
 </header>
 
-<div class="todo">
-<button class="circle"></button>
+<div >
+  <span class="msg"></span>
+<form class="todo form">
+<button class="circle addBtn"></button>
 <input
 name="todo-input"
 class="todo-input"
@@ -34,11 +35,11 @@ aria-label="todo-input"
 type="text"
 placeholder="Create a new todo..."
 />
+</form>
 </div>
 
 
-<ul id="items-list" class="todo-list">
-
+<ul id="items-list" class="todo-list" >
 
 </ul>
 
