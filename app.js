@@ -6,11 +6,9 @@ const msg = document.querySelector('.msg')
 const statusLi = document.querySelector('.end-li')
 const desktopstatusLiNum = document.querySelector('.desktop-num')
 const mobilestatusLiNum = document.querySelector('.count')
-const clearCompleted = document.querySelector('.clear')
 const all = document.querySelector('.all')
-const active =  document.querySelector('.active')
-const completedLi =  document.querySelector('.completed')
-
+const active = document.querySelector('.active')
+const completedLi = document.querySelector('.completed')
 
 let liEl = []
 
@@ -19,10 +17,9 @@ form.addEventListener("submit", (e) => {
   if (input.value === "") {
     msg.textContent = 'Please enter somthing....'
     msg.classList.add('show-msg')
-    setTimeout(() => msg.classList.remove('show-msg'), 2000 )
+    setTimeout(() => msg.classList.remove('show-msg'), 2000)
   } else {
     add()
-    // checkFn ()
     statusLi.classList.add('show-end-li')
   }
 })
@@ -37,18 +34,18 @@ function element(value) {
   const listItem = document.createElement('li')
   listItem.className = "li"
   listItem.innerHTML = `
-  <div class="list-items" >
+
   <span class="my-circle" ></span>
   <p>${value}</p>
    <img class="remove" src="./images/icon-cross.svg" alt="icon">
-  </div>`
+`
   list.appendChild(listItem)
   liEl.push(listItem)
-   remove(listItem)
- completed() 
+  remove(listItem)
+  completed()
+  checkFn()
   desktopstatusLiNum.textContent = liEl.length
   mobilestatusLiNum.textContent = liEl.length
-
 }
 
 
@@ -58,21 +55,18 @@ function completed() {
   tick.forEach((item, idx) => (
     item.addEventListener("click", (e) => {
       if (!liItem[idx].classList.contains('tick-li')) {
-        e.target.classList.add('tick')
-        liItem[idx].classList.add('tick-li')
-      } else if (liItem[idx].classList.contains('tick-li')) {
-        e.target.classList.remove('tick')
-        liItem[idx].classList.remove('tick-li')
+        e.target.classList.toggle('tick')
+        liItem[idx].classList.toggle('tick-li')
       }
     })
   ))
 }
 
 
-
 function remove(listItem) {
   const removeBtn = document.querySelectorAll('.remove')
   const liItem = document.querySelectorAll('.li')
+  const clearCompleted = document.querySelector('.clear')
   removeBtn.forEach((btn, idx) => (
     btn.addEventListener('click', () => {
       liItem[idx].remove()
@@ -81,21 +75,14 @@ function remove(listItem) {
   ))
 
   clearCompleted.addEventListener("click", () => {
-    liItem.forEach((li) => {
+    liItem.forEach((li, idx) => {
       if (li.classList.contains('tick-li')) {
-        li.remove()
-      } if(liEl.length === 0){
-        msg.textContent = 'nothing to clear....'
-        msg.classList.add('show-msg')
-        setTimeout(() => msg.classList.remove('show-msg'), 2000 )
+        liItem[idx].remove()
+        DstatusFn(listItem)
       }
-      DstatusFn(listItem)
     })
-
   })
 }
-
-
 
 
 function DstatusFn(listItem) {
@@ -104,32 +91,35 @@ function DstatusFn(listItem) {
   mobilestatusLiNum.textContent = liEl.length
 }
 
-// const all = document.querySelector('.all')
-// const active =  document.querySelector('.active')
-// const completedLi =  document.querySelector('.completed')
 
-function checkFn () {
 
+function checkFn() {
   const liItem = document.querySelectorAll('.li')
 
   liItem.forEach((li) => {
-     active.addEventListener("click", () => {
-    if(li.classList.contains('tick-li')){
-      li.style.display = 'none'
-    }
+    all.addEventListener("click", () => {
+      li.style.display = 'flex'
+    })
+
+    active.addEventListener("click", () => {
+      if (li.classList.contains('tick-li')) {
+        li.style.display = 'none'
+      }
+      if (!li.classList.contains('tick-li')) {
+        li.style.display = 'flex'
+      }
+    })
+
+    completedLi.addEventListener("click", () => {
+      if (!li.classList.contains('tick-li')) {
+        li.style.display = 'none'
+      }
+      if (li.classList.contains('tick-li')) {
+        li.style.display = 'flex'
+      }
+    })
+
   })
-  })
-
-  // all.addEventListener("click", () => {
-
-  // })
-
- 
-
-  // completedLi.addEventListener("click", () => {
-  //   if(listItem.classList.contains('li')){
-  //     listItem.style.display = 'none'
-  //   }
-  // })
 
 }
+

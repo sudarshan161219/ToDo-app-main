@@ -308,7 +308,7 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 394px;
+  /* width: 394px; */
 }
 .my-circle {
   border-radius: 100px;
